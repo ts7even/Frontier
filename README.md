@@ -6,8 +6,6 @@
 3. Create Effeicent Fronteir through modern portfolio theory. 
 
 
-
-
 ### Code Snipit for Factset Fundementals API:
 ```
 # Content API - FactSet Fundamentals - fundamentals end point python code snippet
