@@ -21,8 +21,10 @@ def stock_prices():
         df = pd.DataFrame({f'{t}': close})
         appended_data.append(df)
     
-    appended_data = pd.concat(appended_data, axis=1)
-    appended_data.to_csv('source/data/s&p_prices.csv')
-    print(appended_data)
+    appended_data = pd.concat(appended_data, axis=1).dropna()
+    sp_ret = appended_data.pct_change(1)
+    # appended_data.to_csv('source/data/sp_prices.csv')
+    # sp_ret.to_csv('source/data/sp_returns.csv')
+    # print(sp_ret)
 
 stock_prices()

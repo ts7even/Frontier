@@ -324,7 +324,6 @@ tickers = ["AAPL",
 "AMCR",
 "RJF",
 "MLM",
-"CEG",
 "CNP",
 "MPWR",
 "VRSN",
@@ -499,3 +498,5 @@ tickers = ["AAPL",
 "ALK",
 "PVH",
 "NCLH"]
+
+# CEG ticker was not working 
