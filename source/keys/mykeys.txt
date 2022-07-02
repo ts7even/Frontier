@@ -2,3 +2,11 @@
 Description: Research
 Username: TXSTATE-1414361
 Password: 0oNKbELGcjJIl4y0PXAt7SJnTZHCIDrUv8immbLD
+
+
+Factset
+Same User Name
+API Key for Global Prices: 30s0NkEDy18bAmvyrZFN9a1Cfty2yDI0RLu49Aag
+
+
+mPeAJbeEwPkRBnLa9eVGCTYE9tii14I6dGFgU4xl

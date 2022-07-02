@@ -1,4 +1,4 @@
-["AAPL",
+tickers = ["AAPL",
 "MSFT",
 "GOOG",
 "GOOGL",
