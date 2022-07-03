@@ -497,6 +497,7 @@ tickers = ["AAPL",
 "PENN",
 "ALK",
 "PVH",
-"NCLH"]
+"NCLH",
+"^GSPC"]
 
 # CEG ticker was not working 
