@@ -10,13 +10,13 @@ from sp_tickers2 import tickers
 
 
 df = pd.read_csv('source/data/sp_returns.csv')
-df.rename(columns={'^GSPC': 'SP50'})
+df1 = df.rename(columns={'^GSPC': 'SP50'})
 
 def regression_stats():
     regress_append = []
 
     for t in tickers:
-        model = smf.ols(f'{t} ~ SP50', data=df).fit()
+        model = smf.ols(f'{t} ~ SP50', data=df1).fit()
         beta = model.params['SP50']
         alpha = model.params['Intercept']
         std_error = model.bse['Intercept']
@@ -30,6 +30,7 @@ def regression_stats():
         regress_append.append(res)
 
     total_df = pd.concat(regress_append,axis=1)
+    total_df.to_csv('source/data/sp_regression.csv')
     print(total_df)
 
 regression_stats()    
