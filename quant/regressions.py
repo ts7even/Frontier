@@ -30,7 +30,10 @@ def regression_stats():
         df_con = pd.concat([resBeta, resAlpha, resStderr],axis=0)
         total_df = pd.concat([total_df, df_con],axis=1)
 
-    total_df.to_csv('source/data/sp_regression.csv')
-    print(total_df)
+    tdf = total_df.transpose()
+    # df3 = tdf.rename(columns={0:'Beta', 1:'Alpha', 2:'STDERR'})
+    tdf.columns = ['Beta', 'Alpha', 'Stderr']
+    tdf.to_csv('source/data/sp_regression.csv')
+    print(tdf)
 
 regression_stats()    
