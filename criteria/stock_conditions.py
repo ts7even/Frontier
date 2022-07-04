@@ -22,15 +22,24 @@ All Stock Have to meet the criteria of
 df1 = pd.read_csv('source/data/sp_regression.csv') # Regression
 df2 = pd.read_csv('source/data/sp_returns.csv') # Returns
 
+df1.rename(columns={ 'Unnamed: 0': 'Ticker'}, inplace=True)
 
-# df3 = df1.rename(columns={0:'Beta', 0.1:'Alpha', 0.2:'STDERR'})
-# df3.drop(index=df3.index[0], axis=0, inplace=True)
 
  
 def regres_criteria():
-    positive_alpha = df1[(df1['Alpha']>=0.001)]
-    negative_alpha = df1[(df1['Alpha']<=0.000)]
-    print(negative_alpha)
+    rf = (3.1156)/100
+    cds = (26.90)/10000
+    rfr = (rf-cds)
+
     
+    # Appending New Column Calculations
+    esteleai_optimal = (df1['Alpha']/df1['Stderr'])
+    df1.insert(4, 'Alpha Opt', esteleai_optimal)
+
+    sharpe_ratio = ((df1['Alpha']+df1['Beta'] - rfr)/df1['Stderr'])
+    df1.insert(5, 'Sharpe', sharpe_ratio)
+    positive_alpha = df1[(df1['Alpha']>=0.001)]
+    print(positive_alpha)
+    df1.to_csv('source/data/Stats_Summary.csv')
 
 regres_criteria()    
