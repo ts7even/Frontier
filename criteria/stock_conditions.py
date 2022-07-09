@@ -30,16 +30,25 @@ def regres_criteria():
     rf = (3.1156)/100
     cds = (26.90)/10000
     rfr = (rf-cds)
+    rm = 0.08
 
     
     # Appending New Column Calculations
-    esteleai_optimal = (df1['Alpha']/df1['Stderr'])
+    esteleai_optimal = (df1['Alpha']/df1['StderrA'])
     df1.insert(4, 'Alpha Opt', esteleai_optimal)
 
-    sharpe_ratio = ((df1['Alpha']+df1['Beta'] - rfr)/df1['Stderr'])
+    sharpe_ratio = ((df1['Alpha']+df1['Beta'] - rfr)/df1['StderrB'])
     df1.insert(5, 'Sharpe', sharpe_ratio)
-    positive_alpha = df1[(df1['Alpha']>=0.001)]
-    print(positive_alpha)
+
+    capm = ((rfr + df1['Beta'])*(rm-rfr))
+    df1.insert(6, 'CAPM', capm)
+
+    adj_capm = ((rfr + df1['Alpha'] + df1['Beta'])*(rm-rfr))
+    df1.insert(7, ' ADJ_CAPM', adj_capm)
+
+
+    positive_alpha = df1[(df1['Alpha']>=0.001) & (df1['Sharpe'] >=3)]
+    print(positive_alpha.round(5))
     df1.to_csv('source/data/Stats_Summary.csv')
 
 regres_criteria()    
