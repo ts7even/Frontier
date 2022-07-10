@@ -28,9 +28,9 @@ def stock_prices():
     print(sp_ret.round(4))
 
 
-df1 = pd.read_csv('source/data_screener/sp_returns.csv')
-def regression_stats():
 
+def regression_stats():
+    df1 = pd.read_csv('source/data_screener/sp_returns.csv')
     total_df = pd.DataFrame()
 
     for t in tickers:
@@ -50,7 +50,6 @@ def regression_stats():
         total_df = pd.concat([total_df, df_con],axis=1)
 
     tdf = total_df.transpose()
-    # df3 = tdf.rename(columns={0:'Beta', 1:'Alpha', 2:'STDERR'})
     tdf.columns = ['Beta', 'Alpha', 'StderrA', 'StderrB']
     tdf.to_csv('source/data_screener/sp_regression.csv')
     print(tdf.round(5))
