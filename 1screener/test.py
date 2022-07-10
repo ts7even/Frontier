@@ -1,31 +1,15 @@
+from statistics import stdev
 import pandas as pd
-import numpy as np
-import scipy as spi 
-import yfinance as yf
+import numpy as np 
+import scipy as sp 
 import statsmodels.formula.api as smf
 import statsmodels.api as sm
+import seaborn as sns
+from datetime import timedelta, datetime
 from sp_tickers import tickers
 
 
 
-def stock_prices():
-    appended_data = []
-
-    for t in tickers:
-    
-        stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1wk')
-    
-        close = stock_info['Close']
-
-        df = pd.DataFrame({f'{t}': close})
-        appended_data.append(df)
-    
-    appended_data = pd.concat(appended_data, axis=1).dropna()
-    appended_data.rename(columns={'^GSPC': 'SP50'}, inplace=True)
-    sp_ret = appended_data.pct_change(1)
-    appended_data.to_csv('source/data_screener/sp_prices.csv')
-    sp_ret.to_csv('source/data_screener/sp_returns.csv')
-    print(sp_ret.round(4))
 
 
 df1 = pd.read_csv('source/data_screener/sp_returns.csv')
@@ -55,5 +39,5 @@ def regression_stats():
     tdf.to_csv('source/data_screener/sp_regression.csv')
     print(tdf.round(5))
 
-# stock_prices()
+
 regression_stats()  
