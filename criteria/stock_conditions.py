@@ -35,16 +35,18 @@ def regres_criteria():
     
     # Appending New Column Calculations
     esteleai_optimal = (df1['Alpha']/df1['StderrA'])
-    df1.insert(4, 'Alpha Opt', esteleai_optimal)
+    df1.insert(5, 'Alpha Opt', esteleai_optimal)
 
     sharpe_ratio = ((df1['Alpha']+df1['Beta'] - rfr)/df1['StderrB'])
-    df1.insert(5, 'Sharpe', sharpe_ratio)
+    df1.insert(6, 'Sharpe', sharpe_ratio)
 
     capm = ((rfr + df1['Beta'])*(rm-rfr))
-    df1.insert(6, 'CAPM', capm)
+    df1.insert(7, 'CAPM', capm)
 
     adj_capm = ((rfr + df1['Alpha'] + df1['Beta'])*(rm-rfr))
-    df1.insert(7, ' ADJ_CAPM', adj_capm)
+    df1.insert(8, ' ADJ_CAPM', adj_capm)
+
+    
 
 
     positive_alpha = df1[(df1['Alpha']>=0.001) & (df1['Sharpe'] >=3)]
