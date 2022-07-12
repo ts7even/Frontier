@@ -1,5 +1,10 @@
 # Effecient-Portfolio
 
+## To Do's
+Create 1 Function or pass varaibles to other functions without reading/sending to csv until all data is met. 
+This Causes unnamed to repeat and breaks the code
+
+
 ## Effiecnt Poirtfolio and Valuaiton
 1. Only Companies with Positive Cashflows. 
 2. Create DCF on Companies through an API 

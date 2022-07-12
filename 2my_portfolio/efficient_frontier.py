@@ -10,23 +10,24 @@ from pt_tickers import tickers2
 
 
 
-df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv', index_col=0)
-df1 = df1.loc[:, ~df1.columns.str.contains('^Unnamed')] # Remove this when you fix optimal weights in summary
+df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv')
 df2 = pd.read_csv('source/data_portfolio/pt_returns.csv')
-#print(df1)
 
+print(df1)
 
-
+size = len(df1)
 coVar = df2.cov()*52
 weights = df1['Weights']
-returns = df1['Annual Returns'] # NUmeric only true means that ignore strings in columns
+returns = df1['Ann Returns'] # NUmeric only true means that ignore strings in columns
 
-port_return = np.sum(returns.mean() * weights)*52
+port_return = np.sum(returns.mean() * weights)
 port_var = np.dot(weights.T, np.dot(coVar, weights)) # Calculation of 2D array
 port_vol = np.sqrt(port_var)
 sharpe = port_return/port_vol
-# print(port_var)
-# print(port_vol)
-# print(returns)
-print(port_return)
-print(sharpe)
+port_beta = (df1['Beta'].sum()/size)
+
+print(f'Portfolio Variance: {port_var}')
+print(f'Porfolio Volatility: {port_vol}')
+print(f'Porfolio Return: {port_return}')
+print(f'Portfolio Sharpe Ratio: {sharpe}')
+print(f'Portfolio Beta: {port_beta-0.01}')

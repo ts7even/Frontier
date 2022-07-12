@@ -25,7 +25,7 @@ def stock_prices():
     sp_ret = appended_data.pct_change(1)
     appended_data.to_csv('source/data_portfolio/pt_prices.csv')
     sp_ret.to_csv('source/data_portfolio/pt_returns.csv')
-    print(sp_ret.round(4))
+    # print(sp_ret.round(4))
 
 
 
@@ -53,7 +53,7 @@ def regression_stats():
     tdf = total_df.transpose()
     tdf.columns = ['Beta', 'Alpha', 'StderrA', 'StderrB']
     tdf.to_csv('source/data_portfolio/pt_regression.csv')
-    print(tdf.round(5))
+    # print(tdf.round(5))
 
 
  
@@ -88,7 +88,7 @@ def regres_criteria():
     # positive_alpha = df1[(df1['Alpha']>=0.001) & (df1['Sharpe'] >=3)]
     # print(positive_alpha.round(5))
     df1.to_csv('source/data_portfolio/Stats_Summary.csv')
-    print(df1)
+    # print(df1)
     
 
 
