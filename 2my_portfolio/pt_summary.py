@@ -96,7 +96,7 @@ def regres_criteria():
 def portfolio_weights():
     # cost = (3719.90)
     # Always You have to make sure the index and values are in same order. 
-    df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv')
+    df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv', index_col=0)
     df2 = pd.read_csv('source/data_portfolio/pt_returns.csv')
 
     returns = df2.mean(numeric_only=True)*52
@@ -108,16 +108,16 @@ def portfolio_weights():
     data1.reset_index(drop=True, inplace=True)
     
     df3 = pd.concat([df1,data1], axis=1)
-    df3.to_csv('source/data_portfolio/Stats_Summary.csv')
+    df3.to_csv('source/data_portfolio/Stats_Summary.csv', index=False)
     print(df3)
     print(df3['Weights'].sum())
     
    
     
   
-# stock_prices()
-# regression_stats()
-# regres_criteria()   
+stock_prices()
+regression_stats()
+regres_criteria()   
 portfolio_weights()
 
 
