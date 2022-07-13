@@ -95,7 +95,8 @@ def regres_criteria():
 
 def portfolio_weights():
     # cost = (3719.90)
-    # Always You have to make sure the index and values are in same order. 
+    # Always You have to make sure the index and values are in same order.
+    # # Probably add log returns 
     df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv', index_col=0)
     df2 = pd.read_csv('source/data_portfolio/pt_returns.csv')
 
@@ -104,7 +105,8 @@ def portfolio_weights():
     weights = np.random.dirichlet(np.ones(size))
     # df1['Weights'] = weights
 
-    data1 = pd.DataFrame({'Ann Returns': returns, 'Weights': weights})
+    data1 = pd.DataFrame({'Ann Returns': returns,
+                        'Weights': weights})
     data1.reset_index(drop=True, inplace=True)
     
     df3 = pd.concat([df1,data1], axis=1)
