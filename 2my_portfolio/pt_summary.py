@@ -118,9 +118,9 @@ def portfolio_weights():
     
 
 def lograngianMultiplier(): # Doesnt Work to well, need to do scipy first to append to Weights column and has to sum up to 1
-    df1 = pd.read_csv('source/data_portfolio/pt_returns.csv')
+    df1 = pd.read_csv('source/data_portfolio/pt_log_returns.csv')
     df2 = pd.read_csv('source/data_portfolio/Stats_Summary.csv')
-    rMin = 0.07
+    rMin = 0.04
     pBar = df1.mean()
     Sigma = df1.cov()
     N = len(df2)
