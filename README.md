@@ -6,6 +6,7 @@
 
 #### Portfolio
 - This is my active portfolio and trying to optimize with Scipy Optimize and appending it to the Summary stats. 
+- In ```2my_portfolio``` you will find ```pt_summary``` which is the primary code that I'm working on. 
 
 
 ## Effiecnt Poirtfolio and Valuaiton
