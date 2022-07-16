@@ -13,7 +13,7 @@ def stock_prices():
 
     for t in tickers:
     
-        stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1wk')
+        stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1d')
     
         close = stock_info['Close']
 
@@ -22,10 +22,15 @@ def stock_prices():
     
     appended_data = pd.concat(appended_data, axis=1).dropna()
     appended_data.rename(columns={'^GSPC':'SP50'}, inplace=True)
-    sp_ret = appended_data.pct_change(1)
+    pt_ret = appended_data.pct_change().dropna()
+    pt_ret_log = appended_data/appended_data.shift(1)
+    pt_log = np.log(pt_ret_log)
+    
     appended_data.to_csv('source/data_portfolio/pt_prices.csv')
-    sp_ret.to_csv('source/data_portfolio/pt_returns.csv')
-    # print(sp_ret.round(4))
+    pt_ret.to_csv('source/data_portfolio/pt_returns.csv')
+    pt_log.to_csv('source/data_portfolio/pt_log_returns.csv')
+    print(pt_ret.round(4))
+    print(pt_log.round(4))
 
 
 
@@ -95,12 +100,10 @@ def regres_criteria():
 
 def portfolio_weights():
     # cost = (3719.90)
-    # Always You have to make sure the index and values are in same order.
-    # # Probably add log returns 
     df1 = pd.read_csv('source/data_portfolio/Stats_Summary.csv', index_col=0)
     df2 = pd.read_csv('source/data_portfolio/pt_returns.csv')
 
-    returns = df2.mean(numeric_only=True)*52
+    returns = df2.mean(numeric_only=True)*252
     size = len(df1)
     weights = np.random.dirichlet(np.ones(size))
     # df1['Weights'] = weights
