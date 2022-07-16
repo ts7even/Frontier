@@ -106,7 +106,6 @@ def portfolio_weights():
     returns = df2.mean(numeric_only=True)*252
     size = len(df1)
     weights = np.random.dirichlet(np.ones(size))
-    # df1['Weights'] = weights
 
     data1 = pd.DataFrame({'Ann Returns': returns,
                         'Weights': weights})
@@ -115,15 +114,28 @@ def portfolio_weights():
     df3 = pd.concat([df1,data1], axis=1)
     df3.to_csv('source/data_portfolio/Stats_Summary.csv', index=False)
     print(df3)
-    print(df3['Weights'].sum())
+    # print(df3['Weights'].sum()) #Check weights <= 1
     
-   
-    
+
+def lograngianMultiplier(): # Doesnt Work to well, need to do scipy first to append to Weights column and has to sum up to 1
+    df1 = pd.read_csv('source/data_portfolio/pt_returns.csv')
+    df2 = pd.read_csv('source/data_portfolio/Stats_Summary.csv')
+    rMin = 0.07
+    pBar = df1.mean()
+    Sigma = df1.cov()
+    N = len(df2)
+    o = np.ones(N)
+    SigmaInv = np.linalg.inv(Sigma)
+    a = np.dot(pBar.T,np.dot(SigmaInv, pBar))
+    b = np.dot(pBar.T,np.dot(SigmaInv, o))
+    c = np.dot(o.T,np.dot(SigmaInv, o))
+    calc = (1/(a*c - b**2)) * np.dot(SigmaInv, ((c*rMin - b)*pBar + (a-b*rMin)*o))
+    print(calc)
   
 stock_prices()
 regression_stats()
 regres_criteria()   
 portfolio_weights()
-
+lograngianMultiplier()
 
 
