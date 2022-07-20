@@ -62,7 +62,7 @@ def min_variance(mean_returns, cov_matrix):
     num_assets = len(mean_returns)
     args = (mean_returns, cov_matrix)
     constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-    bound = (0.0,1.0)
+    bound = (0.0,0.10)
     bounds = tuple(bound for asset in range(num_assets))
 
     result = sco.minimize(portfolio_volatility, num_assets*[1./num_assets,], args=args,

@@ -56,3 +56,4 @@ tickers3 = [
 "VGK",
 "VOO",
 "VWOB"]
+
