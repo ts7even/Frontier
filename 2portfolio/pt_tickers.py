@@ -37,3 +37,22 @@ tickers2 = [
 "VOO",
 "VWOB",
 "SP50"]
+
+tickers3 = [
+"AAPL",
+"AMD",
+"AMZN",
+"BND",
+"CRWD",
+"DFAC",
+"DFAS",    
+"DFUS",
+"ESS",
+"GS",
+"JPM",
+"LOW",
+"MSFT",
+"VEA",
+"VGK",
+"VOO",
+"VWOB"]
