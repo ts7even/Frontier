@@ -1,6 +1,12 @@
 # Effecient-Portfolio
 
 ## Navigation
+#### To-Do 
+- Need to create a probability disribution with random varaibles 
+and use that for the efficient frontier 
+
+
+
 #### Screener
 - This is where I was screening for stocks in the SP500 that has a positive alpha. 
 

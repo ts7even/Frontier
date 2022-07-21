@@ -7,6 +7,8 @@ from scipy.optimize import minimize
 from pt_tickers import tickers3
 
 # This is the SCIPY Optimization
+# Need to do a probability distribution with random variables
+
 
 appended_data = pd.DataFrame()
 for t in tickers3:
