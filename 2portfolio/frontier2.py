@@ -18,7 +18,7 @@ for t in tickers3:
 risk_free_rate = 0.0298
 returns = appended_data.pct_change()
 mean_returns = returns.mean()
-print(mean_returns*252)
+print(mean_returns)
 cov_matrix = returns.cov()
 
 # Log Returns Statistics\
