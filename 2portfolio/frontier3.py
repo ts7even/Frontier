@@ -6,16 +6,28 @@ import scipy.optimize as sco
 from scipy.optimize import minimize
 from pt_tickers import tickers3
 
+# This is the SCIPY Optimization
+
+appended_data = []
+for t in tickers3:
+    stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1d')
+    close = stock_info['Close']
+    df = pd.DataFrame({f'{t}': close})
+    appended_data.append(df)
+appended_data = pd.concat(appended_data, axis=1).dropna()
 
 
+# Statistics
+risk_free_rate = 0.0298
+returns = appended_data.pct_change()
+mean_returns = returns.mean()
+cov_matrix = returns.cov()
 
+# Log Returns Statistics\
+log_return = np.log(appended_data/appended_data.shift(1))
+mean_log_returns = log_return.mean()
+Sigma = log_return.cov()
 
-
-
-
-
-
-# This is the SciPy Optimization
 
 # Efficent Markowiz Frontier with SciPy | Not working right now
 rMin = 0.02
