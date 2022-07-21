@@ -13,13 +13,12 @@ import matplotlib
 # matplotlib.use('Qt5Agg')
 
 # Gathering Stockprices From Stocks in Current Portfolio
-appended_data = []
+appended_data = pd.DataFrame()
 for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(period='10y',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='2y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
-    appended_data.append(df)
-appended_data = pd.concat(appended_data, axis=1).dropna()
+    appended_data = pd.concat([appended_data,df],axis=1)
 
 pre_log = appended_data/appended_data.shift(1)
 # returns = appended_data.pct_change()

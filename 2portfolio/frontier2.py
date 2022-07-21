@@ -7,19 +7,18 @@ from scipy.optimize import minimize
 from pt_tickers import tickers3
 
 # This is brute force method for portfolio Optimization. 
-appended_data = []
+appended_data = pd.DataFrame()
 for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
-    appended_data.append(df)
-appended_data = pd.concat(appended_data, axis=1).dropna()
-
+    appended_data = pd.concat([appended_data,df],axis=1)
 
 # Statistics
 risk_free_rate = 0.0298
 returns = appended_data.pct_change()
 mean_returns = returns.mean()
+print(mean_returns*252)
 cov_matrix = returns.cov()
 
 # Log Returns Statistics\
@@ -31,7 +30,7 @@ Sigma = log_return.cov()
 num_assets = len(mean_log_returns)
 
 '''Portfolio Optimization for Random Weights'''
-num_port = 10000000
+num_port = 100000
 weight = np.zeros((num_port,len(mean_log_returns)))
 expectedReturn = np.zeros(num_port)
 expectedVolatility = np.zeros(num_port)

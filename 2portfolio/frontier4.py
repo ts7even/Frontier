@@ -9,13 +9,12 @@ from pt_tickers import tickers3
 
 # lograngian function | Doesnt Work Well
 
-appended_data = []
+appended_data = pd.DataFrame()
 for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(start='2022-07-07', end='2022-07-20',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
-    appended_data.append(df)
-appended_data = pd.concat(appended_data, axis=1).dropna()
+    appended_data = pd.concat([appended_data,df],axis=1)
 
 
 # Statistics

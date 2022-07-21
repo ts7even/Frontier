@@ -8,13 +8,12 @@ from pt_tickers import tickers3
 
 # This is the SCIPY Optimization
 
-appended_data = []
+appended_data = pd.DataFrame()
 for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(period='1y',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
-    appended_data.append(df)
-appended_data = pd.concat(appended_data, axis=1).dropna()
+    appended_data = pd.concat([appended_data,df],axis=1)
 
 
 # Statistics
@@ -53,3 +52,4 @@ bounds = ((0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1),(0,1
 constraints = ({'type': 'eq', 'fun':checkMinimumReq}, {'type': 'eq', 'fun':CheckSumToOne})
 w_opt = minimize(negativeSR,w0,method='SLSQP',bounds=bounds,constraints=constraints)
 tens = w_opt.x
+print(tens)
