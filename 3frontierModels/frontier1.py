@@ -15,7 +15,7 @@ import matplotlib
 # Gathering Stockprices From Stocks in Current Portfolio
 appended_data = pd.DataFrame()
 for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(period='2y',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
     appended_data = pd.concat([appended_data,df],axis=1)
