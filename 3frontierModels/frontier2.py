@@ -18,14 +18,13 @@ for t in tickers3:
 risk_free_rate = 0.0298
 returns = appended_data.pct_change()
 mean_returns = returns.mean()
-print(mean_returns)
 cov_matrix = returns.cov()
 
 # Log Returns Statistics\
 log_return = np.log(appended_data/appended_data.shift(1))
-mean_log_returns = log_return.mean()
-Sigma = log_return.cov()
-
+annualLogReturns = ((1+log_return).prod())**(252/len(log_return)) -1
+Sigma = log_return.cov()*252
+print(annualLogReturns)
 #NUmber of Assets 
 num_assets = len(mean_log_returns)
 
@@ -43,7 +42,7 @@ for k in range(num_port):
     weight[k,:] = w
 
     # Expected Return
-    expectedReturn[k] = np.sum((mean_log_returns * w))
+    expectedReturn[k] = np.sum((annualLogReturns * w))
 
     # Expected Volatility 
     expectedVolatility[k] = np.sqrt(np.dot(w.T,np.dot(Sigma, w)))
@@ -54,6 +53,7 @@ for k in range(num_port):
 # Printing out optimum weight to maximize sharpe ratio
 maxIndex = sharpeRatio.argmax()
 lmx = weight[maxIndex,:]
+
 print(lmx)
 
 

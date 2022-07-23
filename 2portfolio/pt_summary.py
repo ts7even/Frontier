@@ -10,17 +10,18 @@ from pt_tickers import tickers2
 
 def stock_prices():
     appended_data = pd.DataFrame()
-for t in tickers3:
-    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
-    close = stock_info['Close']
-    df = pd.DataFrame({f'{t}': close})
-    appended_data = pd.concat([appended_data,df],axis=1)
-    
-    appended_data.rename(columns={'^GSPC':'SP50'}, inplace=True)
-    pt_ret = appended_data.pct_change().dropna()
-    pt_ret_log = appended_data/appended_data.shift(1)
-    pt_log = np.log(pt_ret_log)
-    
+    for t in tickers:
+        stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
+        close = stock_info['Close']
+        df = pd.DataFrame({f'{t}': close})
+        appended_data = pd.concat([appended_data,df],axis=1)
+        
+        appended_data.rename(columns={'^GSPC':'SP50'}, inplace=True)
+        pt_ret = appended_data.pct_change().dropna()
+        pt_log = np.log(appended_data/appended_data.shift(1))
+        
+
+
     appended_data.to_csv('source/data_portfolio/pt_prices.csv')
     pt_ret.to_csv('source/data_portfolio/pt_returns.csv')
     pt_log.to_csv('source/data_portfolio/pt_log_returns.csv')
@@ -124,7 +125,7 @@ def lograngianMultiplier(): # Doesnt Work to well, need to do scipy first to app
     a = np.dot(pBar.T,np.dot(SigmaInv, pBar))
     b = np.dot(pBar.T,np.dot(SigmaInv, o))
     c = np.dot(o.T,np.dot(SigmaInv, o))
-    calc = (1/(a*c - b**2)) * np.dot(SigmaInv, ((c*rMin - b)*pBar + (a-b*rMin)*o))
+    calc = (1/(a*c - b**2)) * np.dot(SigmaInv, ((c*rMin - b)*pBar + (a-b*rMin)*o) -1)
     print(calc)
   
 stock_prices()
