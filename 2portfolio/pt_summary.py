@@ -66,7 +66,6 @@ def regression_stats():
     qdf.index.name = 'Tickers'
     qdf.reset_index(drop=False, inplace=True)
     qdf.to_csv('source/data_portfolio/pt_summary.csv')
-    print(qdf.round(5))
 regression_stats()
 
 
@@ -84,7 +83,7 @@ def max_sharpe_ratio(meanLogReurns, Sigma, riskFreeRate):
     num_assets = len(meanLogReurns)
     args = (meanLogReurns, Sigma, riskFreeRate)
     constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-    bound = (0.018,0.0826)
+    bound = (0.018,0.10)
     bounds = tuple(bound for asset in range(num_assets))
     result = sco.minimize(neg_sharpe_ratio, num_assets*[1./num_assets,], args=args,
                         method='SLSQP', bounds=bounds, constraints=constraints)
@@ -97,7 +96,7 @@ def min_variance(meanLogReurns, Sigma):
     num_assets = len(meanLogReurns)
     args = (meanLogReurns, Sigma)
     constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-    bound = (0.018,0.0826)
+    bound = (0.018,0.10)
     bounds = tuple(bound for asset in range(num_assets))
 
     result = sco.minimize(portfolio_volatility, num_assets*[1./num_assets,], args=args,
@@ -105,62 +104,47 @@ def min_variance(meanLogReurns, Sigma):
 
     return result
 
-def efficient_return(meanLogReurns, Sigma, target):
-    num_assets = len(meanLogReurns)
-    args = (meanLogReurns, Sigma)
 
-    def portfolio_return(weights):
-        return portfolio_annualised_performance(weights, meanLogReurns, Sigma)[1]
-
-    constraints = ({'type': 'eq', 'fun': lambda x: portfolio_return(x) - target},
-                   {'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
-    bounds = tuple((0,1) for asset in range(num_assets))
-    result = sco.minimize(portfolio_volatility, num_assets*[1./num_assets,], args=args, method='SLSQP', bounds=bounds, constraints=constraints)
-    return result
-
-
-def efficient_frontier(meanLogReurns, Sigma, returns_range):
-    efficients = []
-    for ret in returns_range:
-        efficients.append(efficient_return(meanLogReurns, Sigma, ret))
-    return efficients
-
+df1 = pd.read_csv('source/data_portfolio/pt_summary.csv', index_col=[0])
 
 def display_ef_with_selected(meanLogReurns, Sigma, riskFreeRate):
     max_sharpe = max_sharpe_ratio(meanLogReurns, Sigma, riskFreeRate)
-    sdp, rp = portfolio_annualised_performance(max_sharpe['x'], meanLogReurns, Sigma)
-    max_sharpe_allocation = pd.DataFrame(max_sharpe.x,index=appended_data.columns,columns=['allocation'])
-    max_sharpe_allocation.allocation = [round(i*100,2)for i in max_sharpe_allocation.allocation]
-    max_sharpe_allocation = max_sharpe_allocation.T
-    
+    max_sharpe_allocation = pd.DataFrame({"+SharpeWeight":max_sharpe.x})
 
     min_vol = min_variance(meanLogReurns, Sigma)
-    sdp_min, rp_min = portfolio_annualised_performance(min_vol['x'], meanLogReurns, Sigma)
-    min_vol_allocation = pd.DataFrame(min_vol.x,index=appended_data.columns,columns=['allocation'])
-    min_vol_allocation.allocation = [round(i*100,2)for i in min_vol_allocation.allocation]
-    min_vol_allocation = min_vol_allocation.T
+    min_vol_allocation = pd.DataFrame({'-VolWeight':min_vol.x})
+
+    num_port = 100000
+    wWeight = np.zeros((num_port,len(meanLogReurns)))
+    expectedReturn = np.zeros(num_port)
+    expectedVolatility = np.zeros(num_port)
+    sharpeRatio = np.zeros(num_port)
+
+    for k in range(num_port):
+        # Generate random weight vector
+        w = np.array(np.random.random(len(meanLogReurns)))
+        w = w / np.sum(w)
+        wWeight[k,:] = w
+
+        # Expected Return
+        expectedReturn[k] = np.sum((meanLogReurns * w))
+
+        # Expected Volatility 
+        expectedVolatility[k] = np.sqrt(np.dot(w.T,np.dot(Sigma, w)))
+
+        #Sharpe Ratio
+        sharpeRatio[k] = expectedReturn[k]/expectedVolatility[k]
+
     
-    an_vol = np.std(logReturn) * np.sqrt(252)
-    an_rt = meanLogReurns * 252
-    
-    print ("-"*80)
-    print ("Maximum Sharpe Ratio Portfolio Allocation\n")
-    print ("Annualised Return:", round(rp,2))
-    print ("Annualised Volatility:", round(sdp,2))
-    print ("\n")
-    print (max_sharpe_allocation)
-    print ("-"*80)
-    print ("Minimum Volatility Portfolio Allocation\n")
-    print ("Annualised Return:", round(rp_min,2))
-    print ("Annualised Volatility:", round(sdp_min,2))
-    print ("\n")
-    print (min_vol_allocation)
-    print ("-"*80)
-    print ("Individual Stock Returns and Volatility\n")
-    for i, txt in enumerate(appended_data.columns):
-        print (txt,":","annuaised return",round(an_rt[i],2),", annualised volatility:",round(an_vol[i],2))
-    print ("-"*80)
-    
+    maxIndex = sharpeRatio.argmax()
+    lmx = wWeight[maxIndex,:]
+    bruteAllocation = pd.DataFrame({'bruteAllocation': lmx})
+
+    weight1 = pd.concat([max_sharpe_allocation, min_vol_allocation, bruteAllocation], axis=1)
+    weight_allocation = pd.concat([df1,weight1], axis=1)
+    weight_allocation.reset_index(drop=True, inplace=True)
+    weight_allocation.to_csv('source/data_portfolio/pt_summary.csv')
+    print(weight_allocation.round(5))
 
 display_ef_with_selected(annualLogReturns, Sigma, riskFreeRate)
 
