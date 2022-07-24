@@ -125,17 +125,10 @@ def display_ef_with_selected(meanLogReurns, Sigma, riskFreeRate):
         w = np.array(np.random.random(len(meanLogReurns)))
         w = w / np.sum(w)
         wWeight[k,:] = w
-
-        # Expected Return
         expectedReturn[k] = np.sum((meanLogReurns * w))
-
-        # Expected Volatility 
         expectedVolatility[k] = np.sqrt(np.dot(w.T,np.dot(Sigma, w)))
-
-        #Sharpe Ratio
         sharpeRatio[k] = expectedReturn[k]/expectedVolatility[k]
 
-    
     maxIndex = sharpeRatio.argmax()
     lmx = wWeight[maxIndex,:]
     bruteAllocation = pd.DataFrame({'bruteAllocation': lmx})
