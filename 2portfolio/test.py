@@ -132,7 +132,7 @@ def display_ef_with_selected(meanLogReurns, Sigma, riskFreeRate):
     max_sharpe_allocation = pd.DataFrame(max_sharpe.x,index=appended_data.columns,columns=['allocation'])
     max_sharpe_allocation.allocation = [round(i*100,2)for i in max_sharpe_allocation.allocation]
     max_sharpe_allocation = max_sharpe_allocation.T
-    max_sharpe_allocation
+    
 
     min_vol = min_variance(meanLogReurns, Sigma)
     sdp_min, rp_min = portfolio_annualised_performance(min_vol['x'], meanLogReurns, Sigma)
