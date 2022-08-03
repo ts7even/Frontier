@@ -1,1 +1,0 @@
-- Here is the Frontier project that is replicated in Rust. 

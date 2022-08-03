@@ -7,6 +7,9 @@ import statsmodels.api as sm
 from sp_tickers import tickers
 from sp_tickers import tickers2
 
+# Capm and Regression uses arthematic returns not log. 
+# But portfolio optimization uses log returns. 
+
 
 appended_data = pd.DataFrame()
 for t in tickers:
