@@ -13,7 +13,7 @@ from sp_tickers import tickers2
 
 appended_data = pd.DataFrame()
 for t in tickers:
-    stock_info = yf.Ticker(f'{t}').history(start='2016-01-01', end='2020-03-30',interval='1d')
+    stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
     df = pd.DataFrame({f'{t}': close})
     appended_data = pd.concat([appended_data,df],axis=1)
@@ -72,7 +72,7 @@ def regression_stats():
     qdf.index.name = 'Tickers'
     qdf.reset_index(drop=False, inplace=True)
     print(qdf,'\n\n')
-    top10sharpe = qdf.nlargest(n=10, columns=['Sharpe'])
+    top10sharpe = qdf.nlargest(n=40, columns=['Sharpe'])
     print(top10sharpe)
     qdf.to_csv('source/data_screener/Stats_Summary.csv')
 regression_stats()
