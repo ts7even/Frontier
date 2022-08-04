@@ -1,10 +1,10 @@
 # Financial Concepts 
+---
 
-
-
+---
 ## Table of Contents 
 ### Market Conecepts 
-- [The Markets and Indicies]()
+- [The Markets and Indicies](#financial-markets-and-insitutions)
 - [Time Value of Money]()
 
 
@@ -53,3 +53,16 @@
 - [Statistics]()
 - [Stochastic Calculus]()
 - [Ida Calculus]()
+---
+
+## Market Concepts 
+#### Financial Markets
+    1. NYSE: The New York Stock Exchange is a Broker market.
+    2. NASDAQ: The NASDAQ is a Dealers market with no physical location. 
+    3. OTC Market (Pink Sheet): 
+    4. AMEX: ETF and Mutual Funds
+#### Market Indexcies
+    1. The Dow Jones Industrial Average: Price Weighted Index
+    2. The S&P500: Value Weighted Index
+
+ 
