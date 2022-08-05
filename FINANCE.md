@@ -125,13 +125,16 @@
 
 ## Quantative Finance & Modern Portfolio Theory
     1. Factor Modeling
+        
+
     2. Efficient Frontier
+        - Security Market Line
     3. Monte Carlo Simulation
     4. Option Pricing Models
 
 
 ## Math And Stats
     1. Statistics
-    2. Stochastic Calculous
-    3. Ida Calculous
+    2. Stochastic Calculus
+    3. Ida Calculus
 
