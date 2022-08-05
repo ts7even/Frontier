@@ -4,137 +4,62 @@
 ## Table of Contents 
 <h3>Market Concepts</h3>
 
-- [The Markets and Indicies](#market-concepts)
-- [Time Value of Money](#time-value-of-money)
+- [The Markets and Indicies](finance_concepts/1marketConcepts.md)
+- [Time Value of Money](finance_concepts/1marketConcepts.md)
 
 <h3>Secutiy Types</h3>
 
-- [Mutual Funds | ETF's](#security-types)
+- [Mutual Funds | ETF's](finance_concepts/2securityTypes.md)
 
     <h4>Equity Market</h4>
 
-    - [Common Stock](#Equity-Market)
-    - [Prefered Stock](#Equity-Market)
+    - [Common Stock](finance_concepts/2securityTypes.md)
+    - [Prefered Stock](finance_concepts/2securityTypes.md)
 
     <h4>Bond Market</h4>
 
-    - [Bond Types]()
-    - [Bond Pricing and Evaluation]()
-    - [Duration Analysis]()
+    - [Bond Types](finance_concepts/2securityTypes.md)
+    - [Bond Pricing and Evaluation](finance_concepts/2securityTypes.md)
+    - [Duration Analysis](finance_concepts/2securityTypes.md)
 
     <h4>Derivative Market</h4>
 
-    - [Futures]()
-    - [Options]()
-    - [Swaps]()
-    - [Forwards]()
-    - [Warrants]()
-    - [Stock Options]()
+    - [Futures](finance_concepts/2securityTypes.md)
+    - [Options](finance_concepts/2securityTypes.md)
+    - [Swaps](finance_concepts/2securityTypes.md)
+    - [Forwards](finance_concepts/2securityTypes.md)
+    - [Warrants](finance_concepts/2securityTypes.md)
+    - [Stock Options](finance_concepts/2securityTypes.md)
 
 <h3>Economic Factors</h3>
 
-- [Economic Reports]()
-- [Economic Conditions]()
+- [Economic Reports](finance_concepts/3economicFactors.md)
+- [Economic Conditions](finance_concepts/3economicFactors.md)
 
 <h3>Finance and Accounting Ratios</h3>
 
-- [Earnings Per Share (EPS)]()
-- [Price to Earnings Ratio (P/E)]()
-- [Enterprise Value to EBITDA (EV/EBITDA)]()
-- [Current Ratio]()
+- [Earnings Per Share (EPS)](finance_concepts/4ratios.md)
+- [Price to Earnings Ratio (P/E)](finance_concepts/4ratios.md)
+- [Enterprise Value to EBITDA (EV/EBITDA)](finance_concepts/4ratios.md)
+- [Current Ratio](finance_concepts/4ratios.md)
 
-<h3>Finance and Accounting Ratios</h3>
+<h3>Fundamental Analysis</h3>
 
-- [Finding Intrinsic Value]()
-- [Capm and Dividend Discount Model]()
-- [Gordon Growth Model]()
+- [Finding Intrinsic Value](finance_concepts/5fundamental.md)
+- [Capm and Dividend Discount Model](finance_concepts/5fundamental.md)
+- [Gordon Growth Model](finance_concepts/5fundamental.md)
 
 <h3>Quantative Finance</h3>
 
-- [Factor Modeling]()
-- [Efficient Frontier]()
-- [Monte Carlo Simulation]()
-- [Option Pricing Models]()
+- [Factor Modeling](finance_concepts/5quantFinance.mdfinance_concepts/6mathStats.md)
+- [Efficient Frontier](finance_concepts/5quantFinance.mdfinance_concepts/6mathStats.md)
+- [Monte Carlo Simulation](finance_concepts/5quantFinance.mdfinance_concepts/6mathStats.md)
+- [Option Pricing Models](finance_concepts/5quantFinance.mdfinance_concepts/6mathStats.md)
 
 <h3>Math and Stats in Finance</h3>
 
-- [Statistics]()
-- [Stochastic Calculus]()
-- [Ida Calculus]()
+- [Statistics](finance_concepts/6mathStats.md)
+- [Stochastic Calculus](finance_concepts/6mathStats.md)
+- [Ida Calculus](finance_concepts/6mathStats.md)
 ---
-
-## Market Concepts 
-
-### Financial Markets
-    1. NYSE: The New York Stock Exchange is a Broker market.
-    2. NASDAQ: The NASDAQ is a Dealers market with no physical location. 
-    3. OTC Market (Pink Sheets): 
-    4. AMEX: ETF and Mutual Funds
-### Market Indexcies
-    1. The Dow Jones Industrial Average: Price Weighted Index
-    2. The S&P500: Value Weighted Index
-### Time Value of Money
-    1. Present Value
-    2. Future Value
-    3. Annuities
-    4. Perpetuity
-
-## Security Types
-    1. Mutual Fund
-    2. ETF's
-
-#### Equity Market
-    1. Common Stock 
-    2. Prefered Stock
- 
-#### Bond Market
-    1. Bond Types 
-    2. Bond Pricing
-    3. Bond Duration Analysis
-
-
-#### Derivatives
-    1. Futures
-    2. Options
-    3. Swaps
-    4. Forwards
-    5. Warrants
-    6. Stock Options
-
-
-## Economic Factors
-    1. Top Down Approach
-    2. Economic Reports
-    3. Economic Conditions
-
-
-## Finance and Accounting Ratios
-    1. EPS
-    2. P/E
-    3. EV/EBITDA
-    4. Current Ratio
-
-
-## Fundamental Analysis
-    1. Intrinsic Value
-    2. Capm
-    3. Gordon Growth Model
-    4. Dividend Discount Model 
-    5. Growth in Perpeturity
-
-
-## Quantative Finance & Modern Portfolio Theory
-    1. Factor Modeling
-        
-
-    2. Efficient Frontier
-        - Security Market Line
-    3. Monte Carlo Simulation
-    4. Option Pricing Models
-
-
-## Math And Stats
-    1. Statistics
-    2. Stochastic Calculus
-    3. Ida Calculus
 
