@@ -16,15 +16,28 @@
 
 ## Time Value of Money
 
-- Present Value
-    $$ PV = {FV \over (1 + {r \over n} )^{t * n}} $$
+### Present Value
+~~~
+                    The present value of future cashflows formula
+~~~
 
-- Future Value
-    $$ FV = {PV * (1 + {r \over n} )^{t * n}} $$
+$$ PV = {FV \over (1 + {r \over n} )^{t * n}} $$
 
-- Annuities
-    $$ PV of Annuities = PMT *  {{[1 - (1 + {r \over n} )^{-t*n}}] \over {r \over n}}  $$ 
+### Future Value
+~~~
+                            The future value of formula
+~~~
+$$ FV = {PV * (1 + {r \over n} )^{t * n}} $$
 
+### Annuities
+~~~
+                            The present value of annuities
+~~~
+$$ PV of Annuities = PMT *  {{[1 - (1 + {r \over n} )^{-t*n}}] \over {r \over n}}  $$ 
 
-    $$ FV of Annuities = PMT *  {{[(1+{r \over n})^{t*n} -1}] \over {r \over n}}  $$ 
+~~~
+                            The future value of annuities 
+~~~
+
+$$ FV of Annuities = PMT *  {{[(1+{r \over n})^{t*n} -1}] \over {r \over n}}  $$ 
 
