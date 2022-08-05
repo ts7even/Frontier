@@ -77,7 +77,7 @@
     1. Present Value
     2. Future Value
     3. Annuities
-    4. 
+    4. Perpetuity
 
 ## Security Types
     1. Mutual Fund
