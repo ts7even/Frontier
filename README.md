@@ -1,7 +1,7 @@
 # Frontier Project
 
 ## Navigation
-- [FINANCE.md](FINANCE.md) - This markdown file show all finance concepts used in the Frontier project and its mathematical and theoretical components. 
+- [FINANCE.md](FINANCE.md) - This the table of contents to show all finance concepts used in the Frontier project and its mathematical and theoretical components. 
 - [1screener](#Stock-Screener) - This folder is the beta, capm, alpha capm (Alpha Adjusted), and sharpe ratio for each individual stock in the SP500 index. 
 - [2portfolio](#Portfolio-Efficient-Frontier) - This folder is a simulated portfolio (Efficient Frontier) that shows optimal weights in the portfolio including same stats from [1screener]. 
 - [3factorModels](#Fama-French-5-Factor-Model) - This folder is the Fama French 5 factor model that replaces the CAPM. It is a multi-varate regression and expected return of assets.
@@ -16,23 +16,35 @@ hidden correlation that mean-variance, critical line algorithm (CLA), hierarchic
 
 
 ### Portfolio Efficient Frontier
-- This is my active portfolio and trying to optimize with Scipy Optimize and appending it to the Summary stats. 
-- In ```2my_portfolio``` you will find ```pt_summary``` which is the primary code that I'm working on. 
+- This is my active portfolio which optimize and allocates certain weights to each asset to reach max sharpe ratio. 
+- In [2portfolio](2portfolio) you will find [pt_summary](2portfolio/pt_summary.py) which is the primary code that I'm working on. 
 
 
 ### Fama French 5 Factor Model 
+- This is the python fama french 5 factor model that is written in python. 
+- Visit [FF5](http://mba.tuck.dartmouth.edu/pages/faculty/ken.french/Data_Library/f-f_factors.html) to learn more about the FF5 model.
+- The file location is in [source/multifactor](source/multifactor) but is too large to commit to github
 
 
 ### Deep Learning Weight Optimization
+- Mean Varaiance
+- Critical Line Algorithm
+- Hierarchical Risk Parity
+- Black-Litterman Allocation (BLA)
+- Deep Learning Alocation (Random and Historical) 
+
 
 ### Value at Risk
+- How much potential loss a portfolio can assume throught out the year & at any given moment. 
+
 
 ### Rust Implementation
+- (Work in Progress)
 
 
 
-
-## Dependencies
+###  Dependencies for Python
+```
 pandas
 numpy
 scipy
@@ -42,6 +54,11 @@ pytorch torch.quasirandom.SobolEngine
 yfinance
 tensorflow
 quantl
-
-
+```
+###  Dependencies for Rust
+```
+[dependencies]
+tensorflow = "0.18.0"
+mimalloc = { version = "*", default-features = false }
+```
 
