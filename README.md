@@ -12,7 +12,8 @@ hidden correlation that mean-variance, critical line algorithm (CLA), hierarchic
 
 
 ### Stock Screener 
-- 
+- All stocks in S&P500 with each tickers stats
+- Can include other stocks but will make program too slow. This is one reason why it will be implemented in rust
 
 
 ### Portfolio Efficient Frontier
