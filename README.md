@@ -55,6 +55,7 @@ pytorch torch.quasirandom.SobolEngine
 yfinance
 tensorflow
 quantl
+statsmodels
 ```
 ###  Dependencies for Rust
 ```
