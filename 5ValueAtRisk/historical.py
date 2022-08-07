@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import datetime as dt
-from pandas_datareader import data as pdr
 from scipy.stats import norm, t
 import matplotlib.pyplot as plt
 
