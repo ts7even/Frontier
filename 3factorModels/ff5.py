@@ -50,8 +50,8 @@ def multiRegression():
         print(model.summary(title=f'{t}'))
         int_coef = pd.DataFrame({f'{t}':model.params})
         ff5_df = pd.concat([ff5_df, int_coef], axis=1)
-    print(ff5_df)
-    return ff5_df
+    tran = ff5_df.transpose()
+    print(tran)
 
 multiRegression()
 
