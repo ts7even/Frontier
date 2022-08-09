@@ -10,6 +10,7 @@ from pt_tickers import tickers2
 from pt_tickers import tickers3
 '''This is a rewrite of Summary to make it better.'''
 
+
 appended_data = pd.DataFrame()
 for t in tickers:
     stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
@@ -21,7 +22,8 @@ for t in tickers:
     pt_ret = appended_data.pct_change()[1:]
     pt_log = np.log(appended_data/appended_data.shift(1))
     
-
+pt_log.to_csv('source/data_portfolio/pt_log_returns.csv')
+pt_ret.to_csv('source/data_portfolio/pt_arthe_returns.csv')
 # Log Returns 
 logReturn = np.log(appended_data/appended_data.shift(1))
 annualLogReturns = ((1+logReturn).prod())**(252/len(logReturn)) -1
@@ -142,3 +144,8 @@ def display_ef_with_selected(meanLogReurns, Sigma, riskFreeRate):
 display_ef_with_selected(annualLogReturns, Sigma, riskFreeRate)
 
 
+
+
+# Need to Add Historical Value At Risk 
+# Need to Add Monte Carlo Var 
+# Need to Add var-covar VAR
