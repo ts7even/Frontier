@@ -116,7 +116,7 @@ def display_ef_with_selected(meanLogReurns, Sigma, riskFreeRate):
     min_vol = min_variance(meanLogReurns, Sigma)
     min_vol_allocation = pd.DataFrame({'-VolWeight':min_vol.x})
 
-    num_port = 100000
+    num_port = 1000000
     wWeight = np.zeros((num_port,len(meanLogReurns)))
     expectedReturn = np.zeros(num_port)
     expectedVolatility = np.zeros(num_port)
