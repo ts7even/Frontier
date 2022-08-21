@@ -8,7 +8,16 @@ import scipy.optimize as sco
 from pt_tickers import tickers
 from pt_tickers import tickers2
 from pt_tickers import tickers3
-'''This is a rewrite of Summary to make it better.'''
+''' 
+    ~~~ To-Do's ~~~
+    1. Create Historical Portfolio Returns 
+    2. Create VAR for Portfolio (Weekly, Monthly, Yearly) with Var|Covar, Historical, & Quasi Random
+    3. Create Quasi Random Returns % Monte Carlo Simulation
+    4. Webscrape Risk Free Rate and CDS spread of the risk free asset
+    5. Rewrite to have function return values. Also Rewrite Random Portfolio weight optimization. 
+ 
+
+'''
 
 
 appended_data = pd.DataFrame()
