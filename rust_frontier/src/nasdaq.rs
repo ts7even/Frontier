@@ -7859,7 +7859,6 @@
         "BDRY",
         "DALI",
         "GRNB",
-        "USAI",
         "JJU",
         "NFLT",
         "BOSS",

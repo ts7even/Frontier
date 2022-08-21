@@ -15,6 +15,7 @@ appended_data = pd.DataFrame()
 for t in tickers:
     stock_info = yf.Ticker(f'{t}').history(period='5y',interval='1d')
     close = stock_info['Close']
+    print(f'{t}')
     df = pd.DataFrame({f'{t}': close})
     appended_data = pd.concat([appended_data,df],axis=1)
     
