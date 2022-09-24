@@ -17,9 +17,9 @@ hidden correlation that mean-variance, critical line algorithm (CLA), hierarchic
 
 
 ### Portfolio Efficient Frontier
-- This is my active portfolio which optimize and allocates certain weights to each asset to reach max sharpe ratio. 
+- This is my active portfolio which optimize and allocates certain weights to each asset to reach max sharpe / sortino ratio. 
 - In [2portfolio](2portfolio) you will find [pt_summary](2portfolio/pt_summary.py) which is the primary code that I'm working on. 
-
+- Currenly working on Hierarchical Risk Parity and Black-Litterman allocation models which will be added by the end of the year (Finishing Last Semester of University)
 
 ### Fama French 5 Factor Model 
 - This is the python fama french 5 factor model that is written in python. 
@@ -31,7 +31,6 @@ hidden correlation that mean-variance, critical line algorithm (CLA), hierarchic
 - Mean Varaiance
 - Critical Line Algorithm
 - Hierarchical Risk Parity
-- Black-Litterman Allocation (BLA)
 - Deep Learning Alocation (Random and Historical) 
 
 
